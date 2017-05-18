@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta Information -->
+    <title>Tweeter - Home Page</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700" rel="stylesheet">
+
+    <!-- App CSS -->
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+
+    <!-- Nav CSS -->
+    <link rel="stylesheet" href="/styles/nav.css/nav.css" type="text/css" />
+
+  <!-- New tweet CSS -->
+  <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
+
+    <!-- External JS -->
+    <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
+
+    <!-- App JS -->
+    <script type="text/javascript" src="/scripts/app.js"></script>
+
+    <!-- char-Counter JS -->
+    <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Top nav bar (fixed) -->
+    <nav id="nav-bar">
+      <img class="logo" src="/images/bird.png" >
+      <span class="header">Tweeter</span>
+      <a href="#"><div class="compose-button">Compose</div></a>
+    </nav>
+
+    <!-- Page-specific (main) content here -->
+    <main class="container">
+      <section class="tweet-wrapper">
+        <h2>Compose Tweet</h2>
+        <form id="compose-form">
+          <textarea class="tweet-textarea" name="text" placeholder="What are you humming about?"></textarea>
+          <div class="compose-flash-message"></div>
+          <div>
+            <input class="submit-tweet-button disabled" type="submit" value="Tweet" >
+
+            <span class="counter">140</span>
+          </div>
+        </form>
+      </section>
+      <section id= "tweets-container">
+      <!--   <div class="new-tweet-prototype">
+          <header class="tweet-header">
+            <img class="tweeter-user-icon" src="/images/tweeter-user-icon.jpg">
+            <h2>Shawna Lynn</h2>
+            <h4>@ssbelle</h4>
+          </header>
+          <article class="tweet-article">
+            <p>sing a little song for me sing a little song for me  sing a little song for me sing a little song for me sing a little song for me vvvvvvvvv</p>
+          </article>
+          <footer class="tweet-footer">
+            <h6>10 days ago</h6>
+            <div class="tweet-icons">
+              <a href="#">
+                <img src="/images/tweeter-flag-icon.jpg">
+              </a>
+              <a href="#">
+                <img src="/images/tweeter-retweet-icon.jpg">
+              </a>
+              <a href="#">
+                <img src="/images/tweeter-heart-icon.png">
+              </a>
+            </div>
+          </footer>
+        </div> -->
+      </section>
+    </main>
+
+  </body>
+</html>
