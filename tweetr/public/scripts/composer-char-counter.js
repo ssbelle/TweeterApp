@@ -50,7 +50,9 @@ $(document).ready(function(){
         // and then we add a single new one.
         .on('click.tweet', function(event) {
           event.preventDefault(event);
+
           var formData = $('#compose-form').serialize()
+-
           $.ajax({
             url: '/tweets',
             method: 'POST',
@@ -60,7 +62,7 @@ $(document).ready(function(){
             // we clear the textarea after posting
             // so it's ready for a new tweet.
             $('.tweet-wrapper input')
-              .closest("div").siblings("textarea").val("");
+              .closest("div").siblings("textarea").val("")
             // then we have to redisable the button again,
             // since the textarea is empty
               .addClass("disabled")

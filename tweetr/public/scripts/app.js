@@ -93,6 +93,7 @@ function createTweetElement(tweetData){
 function renderTweets(arr) {
   $('#tweets-container').empty();
   arr.forEach(function(tweet){
+    console.log(tweet)
     $('#tweets-container').prepend(createTweetElement(tweet));
   });
 };
@@ -101,6 +102,7 @@ function renderTweets(arr) {
 //loadtweets
 function loadTweets(){
   $.get('/tweets', function(tweets){
+
     renderTweets(tweets);
   })
 };
@@ -122,6 +124,7 @@ $(document).ready(function(event){
   //   })
   // })
   $( ".compose-button").click(function() {
+
     $( ".tweet-wrapper" ).slideToggle( "fast", function() {
     });
   });

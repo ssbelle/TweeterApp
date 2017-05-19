@@ -9,6 +9,13 @@
   justify-content: center;
   align-items: center;
   background-color: #eee;
+  display:none;
+}
+
+.tweet-wrapper-content {
+  display:flex;
+  align-items: center;
+  flex-direction:column;
 }
 
 .tweet-wrapper h2 {
