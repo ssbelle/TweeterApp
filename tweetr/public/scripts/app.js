@@ -119,6 +119,7 @@ $(document).ready(function(event){
   $( ".compose-button").click(function() {
     $("flash-alert").hide();
     $( ".tweet-wrapper" ).slideToggle( "fast", function() {
+       $(".tweet-textarea").trigger('focus')
     });
   });
 
@@ -126,6 +127,7 @@ $(document).ready(function(event){
   $(".register-button").click(function(){
     $(".login").slideUp()
     $(".register").slideToggle("fast", function(){
+      $("#reg-name").trigger('focus')
       $("#register-button").click(registerSubmit);
     });
   });
@@ -134,10 +136,13 @@ $(document).ready(function(event){
   $(".login-button").click(function(){
     $(".register").slideUp()
     $(".login").slideToggle("fast", function() {
+      $("#log-name").trigger('focus')
       $("#login-button").click(loginSubmit);
     });
   });
 });
+
+
 
 
 
