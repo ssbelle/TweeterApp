@@ -49,10 +49,10 @@ $(document).ready(function(){
         .off('click.tweet')
         // and then we add a single new one.
         .on('click.tweet', function(event) {
-          event.preventDefault(event);
+          event.preventDefault(event)
 
           var formData = $('#compose-form').serialize()
--
+
           $.ajax({
             url: '/tweets',
             method: 'POST',

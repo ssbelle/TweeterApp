@@ -35,16 +35,50 @@
     <nav id="nav-bar">
       <img class="logo" src="/images/bird.png" >
       <span class="header">Tweeter</span>
-      <a href="#"><div class="compose-button">Compose</div></a>
+      <a class="register-button btn" href="#"><div >REGISTER</div></a>
+       <a class="login-button btn" href="#"><div >LOGIN</div></a>
+
+       <a class="compose-button btn" style="display:none" href="#"><div >COMPOSE</div></a>
+       <a class="logout-button btn" style="display:none" href="#"><div> LOGOUT</div></a>
     </nav>
 
     <!-- Page-specific (main) content here -->
     <main class="container">
+
+
+
+      <div class="register">
+        <form style=""  id="register-form">
+          <label for="name">Username:</label>
+          <input id="name" type="text" name="name"><br>
+          <label for="password">Password:</label>
+          <input id="password" type="text" name="password"><br>
+          <input id="register-button"  type="submit" value="Register">
+        </form>
+     </div>
+
+     <div class ="flash-alert"></div>
+
+
+     <div class="login">
+       <form style="" id="login-form">
+        <label for="name">Username:</label>
+        <input id="name" type="text" name="name"><br>
+        <label for="password">Password:</label>
+        <input id="password" type="password" name="password"><br>
+        <input id="login-button" type="submit" value="Sign-In">
+        </form>
+    </div>
+
+
+
+
       <section class="tweet-wrapper" >
       <div class= "tweet-wrapper-content">
         <h2>Compose Tweet</h2>
         <form id="compose-form">
           <textarea class="tweet-textarea" name="text" placeholder="What are you humming about?"></textarea>
+          <input id="userInfo" name="user"></form>
           <div class="compose-flash-message"></div>
           <div>
             <input class="submit-tweet-button disabled" type="submit" value="Tweet" >

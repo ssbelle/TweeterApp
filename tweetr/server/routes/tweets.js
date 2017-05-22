@@ -1,16 +1,17 @@
 "use strict";
 
-const userHelper    = require("../lib/util/user-helper")
+const userHelper    = require("../lib/util/user-helper");
 const express       = require('express');
 const tweetsRoutes  = express.Router();
 
 module.exports = function(DataHelpers) {
-
+  //console.log("hello");
   tweetsRoutes.get("/", function(req, res) {
     DataHelpers.getTweets((err, tweets) => {
       if (err) {
         res.status(500).json({ error: err.message });
       } else {
+        ////console.log("heyhey")
         res.json(tweets);
       }
     });
@@ -22,9 +23,16 @@ module.exports = function(DataHelpers) {
 
       // res.render("/tweets/")
       return;
+    } else {
+
+
+
     }
 
-    const user = req.body.user ? req.body.user : userHelper.generateRandomUser();
+     //already given user = req.body
+     console.log('tweets', req.body);
+    const user = req.body.user ? JSON.parse(req.body.user) : userHelper.generateRandomUser();
+    console.log('tweets after parse', user);
     const tweet = {
       user: user,
       content: {
@@ -32,7 +40,7 @@ module.exports = function(DataHelpers) {
       },
       created_at: Date.now()
     };
-
+    //console.log(user)
     DataHelpers.saveTweet(tweet, (err) => {
       if (err) {
         res.status(500).json({ error: err.message });
@@ -43,5 +51,4 @@ module.exports = function(DataHelpers) {
   });
 
   return tweetsRoutes;
-
 }

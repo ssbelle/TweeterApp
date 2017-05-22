@@ -4,53 +4,6 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-var data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": {
-        "small":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
-        "regular": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188.png",
-        "large":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_200.png"
-      },
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": {
-        "small":   "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_50.png",
-        "regular": "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc.png",
-        "large":   "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_200.png"
-      },
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  },
-  {
-    "user": {
-      "name": "Johann von Goethe",
-      "avatars": {
-        "small":   "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_50.png",
-        "regular": "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1.png",
-        "large":   "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_200.png"
-      },
-      "handle": "@johann49"
-    },
-    "content": {
-      "text": "Es ist nichts schrecklicher als eine tätige Unwissenheit."
-    },
-    "created_at": 1461113796368
-  }
-];
-
 
 function escape(str) {
   var article = document.createElement('article')
@@ -62,15 +15,15 @@ function escape(str) {
 function createTweetElement(tweetData){
   let newTweet =
     '<header class="tweet-header">' +
-      '<img class="tweeter-user-icon" src="'+ tweetData.user.avatars.small +'">' +
+      '<img class="tweeter-user-icon" src="' + tweetData.user.avatars.small + '">' +
       '<h2>' + tweetData.user.name + '</h2>' +
-      '<h4>'+ tweetData.user.handle +'</h4>' +
+      '<h4>'+ tweetData.user.handle + '</h4>' +
     '</header>' +
     '<article class="tweet-article">' +
       '<p>'+ escape(tweetData.content.text) +'</p>' +
     '</article>' +
     '<footer class="tweet-footer">' +
-      '<h6>'+ tweetData.created_at +'</h6>' +
+      '<h6>'+ new Date(tweetData.created_at).toString().slice(0, -18) +'</h6>' +
       '<div class="tweet-icons">' +
         '<a href="#">' +
           '<img src="/images/tweeter-flag-icon.jpg">' +
@@ -89,55 +42,108 @@ function createTweetElement(tweetData){
 };
 
 
+// function createUser(userData) {
+//   let newUser =
+
+// }
+
 
 function renderTweets(arr) {
   $('#tweets-container').empty();
   arr.forEach(function(tweet){
-    console.log(tweet)
     $('#tweets-container').prepend(createTweetElement(tweet));
   });
 };
 
-
 //loadtweets
 function loadTweets(){
   $.get('/tweets', function(tweets){
-
+    //console.log('load', tweets)
     renderTweets(tweets);
   })
 };
-loadTweets()
 
-//form submit handler
+function connectMe(linkURL, formData) {
+  console.log("test form data login", formData)
+  $.ajax({
+    url: linkURL,
+    method: 'POST',
+    data: formData,
+    success: function (data, textStatus, xhr) {
+      var msg = xhr.responseJSON.message;
+      var msgType = xhr.responseJSON.type;
+      $(".flash-alert").addClass(msgType).html(msg);
+      console.log(JSON.stringify(xhr.responseJSON.user));
+      loggedInChangeOver(JSON.stringify(xhr.responseJSON.user));
+
+    },
+    error: function(xhr, textStatus, errorThrow) {
+      var msg = xhr.responseJSON.message;
+      var msgType = xhr.responseJSON.type;
+      $(".flash-alert").addClass(msgType).html(msg);
+    }
+  })
+}
+
+function registerSubmit(event) {
+  event.preventDefault()
+   $(".register").slideUp()
+  var formData = $('#register-form').serialize();
+  connectMe('/register', formData);
+}
+
+function loginSubmit(event) {
+  event.preventDefault()
+  var formData = $('#login-form').serialize();
+  connectMe('/login', formData);
+}
+
+function loggedInChangeOver(user) {
+   $(".login").slideUp();
+   $(".register-button").hide();
+   $(".login-button").hide();
+   $(".compose-button").show();
+   $(".logout-button").show();
+   $(".flash-alert").delay( 3000 ).fadeOut( 500 );
+   $("#compose-form #userInfo").val(user);
+}
+
+
+function logout(event) {
+
+
+}
+
+
+
+//
 $(document).ready(function(event){
-  // moved to composer-char-counter.js, line 37
-  // $('.submit-tweet-button').on('click.tweet',function(event) {
-  //    event.preventDefault(event);
-  //    var formData = $('#compose-form').serialize()
+  loadTweets();
 
-  //    $.ajax({
-  //     url: '/tweets',
-  //     method: 'POST',
-  //     data: formData
-  //   }).done(() => {
-  //     loadTweets();
-  //   })
-  // })
+  //listener for compose button
   $( ".compose-button").click(function() {
-
+    $("flash-alert").hide();
     $( ".tweet-wrapper" ).slideToggle( "fast", function() {
+    });
+  });
+
+  //listener for register button
+  $(".register-button").click(function(){
+    $(".login").slideUp()
+    $(".register").slideToggle("fast", function(){
+      $("#register-button").click(registerSubmit);
+    });
+  });
+
+  //listener for login button
+  $(".login-button").click(function(){
+    $(".register").slideUp()
+    $(".login").slideToggle("fast", function() {
+      $("#login-button").click(loginSubmit);
     });
   });
 });
 
 
 
-
-// $.ajax({
-//   url: '/',
-//   method: 'GET',
-
-// })
-
-//on submit ajax to /home again
 
