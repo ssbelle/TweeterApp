@@ -7,12 +7,10 @@ const md5 = require('md5');
 
 module.exports = {
 
-  // registerUser: () => {
-
-  // }
 
   generateRandomUser: (newUser) => {
-    // console.log
+    //kept randomized avatar and handle for now.
+    //need to add to registration process and change this func further
     const gender    = newUser.gender || chance.gender();
     const firstName = newUser.firstName || chance.first({gender: gender});
     const lastName  = newUser.lastName || chance.last();
