@@ -18,10 +18,9 @@ Future features include:
 
 
 #Final Product
-tweeter homepage before reg/login
+
 !["tweeter homepage before reg/login"](https://github.com/ssbelle/TweeterApp/blob/master/tweetr/public/images/tweeter-homepage-before-reg:login.png?raw=true)
 
-tweeter homepage buttons hover<br>
 !["tweeter homepage buttons hover"](https://github.com/ssbelle/TweeterApp/blob/master/tweetr/public/images/tweeter-homepage-buttons-hover.png?raw=true)
 
 
