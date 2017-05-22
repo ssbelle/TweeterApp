@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 // Basic express setup:
 
@@ -24,22 +24,24 @@ MongoClient.connect(MONGODB_URI, (err, db) => {
   }
   console.log(`woot connected to mongodb: ${MONGODB_URI}`);
 
-// The `data-helpers` module provides an interface to the database of tweets.
-// This simple interface layer has a big benefit: we could switch out the
-// actual database it uses and see little to no changes elsewhere in the code
-// (hint hint).
-//
-// Because it exports a function that expects the `db` as a parameter, we can
-// require it and pass the `db` parameter immediately:
+  // The `data-helpers` module provides an interface to the database of tweets.
+  // This simple interface layer has a big benefit: we could switch out the
+  // actual database it uses and see little to no changes elsewhere in the code
+  // (hint hint).
+  //
+  // Because it exports a function that expects the `db` as a parameter, we can
+  // require it and pass the `db` parameter immediately:
   const DataHelpers = require('./lib/data-helpers.js')(db);
 
-// The `tweets-routes` module works similarly: we pass it the `DataHelpers` object
-// so it can define routes that use it to interact with the data layer.
+  // The `tweets-routes` module works similarly: we pass it the `DataHelpers` object
+  // so it can define routes that use it to interact with the data layer.
   const tweetsRoutes = require('./routes/tweets')(DataHelpers);
 
-// Mount the tweets routes at the "/tweets" path prefix:
+  // Mount the tweets routes at the "/tweets" path prefix:
   app.use('/tweets', tweetsRoutes);
 
+
+  //register process needs to be polished
   app.post('/register', (req, res) =>{
     const users = db.collection("users");
     const tryUser = {name : req.body.name, password: req.body.password};
@@ -73,6 +75,9 @@ MongoClient.connect(MONGODB_URI, (err, db) => {
     })
   });
 
+
+  //login process needs to be polished
+  //need to add encryption  etc
   app.post('/login', (req, res) => {
     const users = db.collection("users");
     const loginInfo = {name: req.body.name, password: req.body.password};
@@ -82,7 +87,7 @@ MongoClient.connect(MONGODB_URI, (err, db) => {
         delete doc.password
         res.status(200).json({
           type: 'success',
-          message: "Congrats you are logged in! Tweet away!",
+          message: 'Congrats you are logged in! Tweet away!',
           user: doc
         })
       } else {
@@ -96,52 +101,17 @@ MongoClient.connect(MONGODB_URI, (err, db) => {
 
 
   app.get('/login', (req, res) => {
-    console.log("get from login")
-    .res.send("get login some string").end();
+    console.log('get from login')
+    .res.send('get login some string').end();
   })
 
   app.get('/register', (req, res) =>{
     console.log('get from register')
-    res
-      .send("get some string")
-      .end();
+    res.send('get some string').end();
   });
 })
 
-// The in-memory database of tweets. It's a basic object with an array in it.
-// const db = require("./lib/in-memory-db");
 
 app.listen(PORT, () => {
-  console.log("Example app listening on port " + PORT);
+  console.log('Example app listening on port ' + PORT);
 });
-
-
-
-///previous exercise finding in mongodb
-// var col = db.collection("tweets");
-// col.find({}).toArray((err, result) => {
-//   if(err) throw err;
-//   console.log("woot got the db:" result);
-//   db.close();
-
-
-
-  // app.get("/*", (req, res, next)=>{
-  //   console.log("get request at: ", req.originalUrl);
-  //   next();
-  // });
-  // app.post("/register", (req, res, next)=>{
-  //   console.log("post request at: ", req.body.name);
-  //   next();
-  // });
-
-
-///////previous notes
-
-// The `data-helpers` module provides an interface to the database of tweets.
-// This simple interface layer has a big benefit: we could switch out the
-// actual database it uses and see little to no changes elsewhere in the code
-// (hint hint).
-//
-// Because it exports a function that expects the `db` as a parameter, we can
-// require it and pass the `db` parameter immediately:
