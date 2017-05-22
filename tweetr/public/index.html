@@ -31,22 +31,20 @@
 
   <body>
 
-    <!-- Top nav bar (fixed) -->
+    <!-- Top nav bar (fixed) with buttons-->
     <nav id="nav-bar">
       <img class="logo" src="/images/bird.png" >
       <span class="header">Tweeter</span>
       <a class="register-button btn" href="#"><div >REGISTER</div></a>
-       <a class="login-button btn" href="#"><div >LOGIN</div></a>
-
-       <a class="compose-button btn" style="display:none" href="#"><div >COMPOSE</div></a>
-       <a class="logout-button btn" style="display:none" href="#"><div> LOGOUT</div></a>
+      <a class="login-button btn" href="#"><div >LOGIN</div></a>
+      <a class="compose-button btn" style="display:none" href="#"><div >COMPOSE</div></a>
+      <a class="logout-button btn" style="display:none" href="#"><div> LOGOUT</div></a>
     </nav>
 
     <!-- Page-specific (main) content here -->
-    <main class="container">
+<main class="container">
 
-
-
+      <!-- register form -jquery animations found in doc ready in app.js -->
       <div class="register">
         <form style=""  id="register-form">
           <label for="name">Username:</label>
@@ -55,66 +53,42 @@
           <input id="password" type="text" name="password"><br>
           <input id="register-button"  type="submit" value="Register">
         </form>
-     </div>
+      </div>
 
-     <div class ="flash-alert"></div>
+      <!-- flash msgs that appear on error of success of reg/login  -->
+      <div class ="flash-alert"></div>
 
-
-     <div class="login">
-       <form style="" id="login-form">
-        <label for="name">Username:</label>
-        <input id="name" type="text" name="name"><br>
-        <label for="password">Password:</label>
-        <input id="password" type="password" name="password"><br>
-        <input id="login-button" type="submit" value="Sign-In">
+      <!-- login form -jquery animations found in doc ready in app.js -->
+      <div class="login">
+        <form style="" id="login-form">
+          <label for="name">Username:</label>
+          <input id="name" type="text" name="name"><br>
+          <label for="password">Password:</label>
+          <input id="password" type="password" name="password"><br>
+          <input id="login-button" type="submit" value="Sign-In">
         </form>
-    </div>
+      </div>
 
 
+  <section class="tweet-wrapper" >
+    <div class= "tweet-wrapper-content">
+      <h2>Compose Tweet</h2>
+      <form id="compose-form">
+        <textarea class="tweet-textarea" name="text" placeholder="What are you humming about?"></textarea>
+        <input id="userInfo" name="user">
 
-
-      <section class="tweet-wrapper" >
-      <div class= "tweet-wrapper-content">
-        <h2>Compose Tweet</h2>
-        <form id="compose-form">
-          <textarea class="tweet-textarea" name="text" placeholder="What are you humming about?"></textarea>
-          <input id="userInfo" name="user"></form>
-          <div class="compose-flash-message"></div>
-          <div>
-            <input class="submit-tweet-button disabled" type="submit" value="Tweet" >
-
-            <span class="counter">140</span>
-          </div>
-        </form>
+        <!-- error msgs wihin tweet form only about tweet errors -->
+        <div class="compose-flash-message"></div>
         <div>
-      </section>
-      <section id= "tweets-container">
-      <!--   <div class="new-tweet-prototype">
-          <header class="tweet-header">
-            <img class="tweeter-user-icon" src="/images/tweeter-user-icon.jpg">
-            <h2>Shawna Lynn</h2>
-            <h4>@ssbelle</h4>
-          </header>
-          <article class="tweet-article">
-            <p>sing a little song for me sing a little song for me  sing a little song for me sing a little song for me sing a little song for me vvvvvvvvv</p>
-          </article>
-          <footer class="tweet-footer">
-            <h6>10 days ago</h6>
-            <div class="tweet-icons">
-              <a href="#">
-                <img src="/images/tweeter-flag-icon.jpg">
-              </a>
-              <a href="#">
-                <img src="/images/tweeter-retweet-icon.jpg">
-              </a>
-              <a href="#">
-                <img src="/images/tweeter-heart-icon.png">
-              </a>
-            </div>
-          </footer>
-        </div> -->
-      </section>
-    </main>
-
-  </body>
+          <input class="submit-tweet-button disabled" type="submit" value="Tweet" >
+          <span class="counter">140</span>
+        </div>
+      </form>
+    </div>
+  </section>
+  <section id= "tweets-container">
+  <!--   this tweet prototype was moved to app.js to be rendered dynamically -->
+  </section>
+</main>
+</body>
 </html>
