@@ -9,30 +9,27 @@
   width: 100%;
   top: 0;
   z-index: 1; }
-
-#nav-bar .logo {
-  height: 80px;
-  width: 80px; }
-
-#nav-bar .header {
-  margin-right: 8vw;
-  font-size: 2.2em;
-  color: #e8fdff;
-  font-weight: 300; }
-
-#nav-bar a {
-  width: 80px;
-  height: 50px;
-  border-radius: 5px;
-  margin-left: 1vw;
-  border: 2px solid #b15d8e;
-  background-color: #a85084;
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.1em;
-  font-weight: 300; }
+  #nav-bar .logo {
+    height: 80px;
+    width: 80px; }
+  #nav-bar .header {
+    margin-right: 8vw;
+    font-size: 2.2em;
+    color: #e8fdff;
+    font-weight: 300; }
+  #nav-bar a {
+    width: 80px;
+    height: 50px;
+    border-radius: 5px;
+    margin-left: 1vw;
+    border: 2px solid #b15d8e;
+    background-color: #a85084;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1em;
+    font-weight: 300; }
 
 .compose-button {
   display: none; }

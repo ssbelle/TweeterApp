@@ -77,19 +77,5 @@ $(document).ready(function(){
   });
 });
 
-//$('.submit-tweet-button').on('click.tweet',function(event) {
-  //    event.preventDefault(event);
-  //    var formData = $('#compose-form').serialize()
 
-  //    $.ajax({
-  //     url: '/tweets',
-  //     method: 'POST',
-  //     data: formData
-  //   }).done(() => {
-  //     loadTweets();
-  //   })
-  // })
-
-
-//error over 140 or empty
 

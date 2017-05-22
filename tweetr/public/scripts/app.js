@@ -42,11 +42,6 @@ function createTweetElement(tweetData){
 };
 
 
-// function createUser(userData) {
-//   let newUser =
-
-// }
-
 
 function renderTweets(arr) {
   $('#tweets-container').empty();
@@ -55,27 +50,26 @@ function renderTweets(arr) {
   });
 };
 
-//loadtweets
+
 function loadTweets(){
   $.get('/tweets', function(tweets){
-    //console.log('load', tweets)
     renderTweets(tweets);
   })
 };
 
+
 function connectMe(linkURL, formData) {
-  console.log("test form data login", formData)
   $.ajax({
     url: linkURL,
     method: 'POST',
     data: formData,
+
     success: function (data, textStatus, xhr) {
       var msg = xhr.responseJSON.message;
       var msgType = xhr.responseJSON.type;
       $(".flash-alert").addClass(msgType).html(msg);
-      console.log(JSON.stringify(xhr.responseJSON.user));
+      // console.log(JSON.stringify(xhr.responseJSON.user));
       loggedInChangeOver(JSON.stringify(xhr.responseJSON.user));
-
     },
     error: function(xhr, textStatus, errorThrow) {
       var msg = xhr.responseJSON.message;
@@ -85,18 +79,21 @@ function connectMe(linkURL, formData) {
   })
 }
 
+
 function registerSubmit(event) {
   event.preventDefault()
-   $(".register").slideUp()
+  $(".register").slideUp()
   var formData = $('#register-form').serialize();
   connectMe('/register', formData);
 }
+
 
 function loginSubmit(event) {
   event.preventDefault()
   var formData = $('#login-form').serialize();
   connectMe('/login', formData);
 }
+
 
 function loggedInChangeOver(user) {
    $(".login").slideUp();
@@ -110,13 +107,11 @@ function loggedInChangeOver(user) {
 
 
 function logout(event) {
-
-
+  $(".logout-button").click(event)
 }
 
 
 
-//
 $(document).ready(function(event){
   loadTweets();
 
