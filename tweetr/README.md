@@ -20,9 +20,17 @@ Future features include:
 #Final Product
 
 !["tweeter homepage before reg/login"](https://github.com/ssbelle/TweeterApp/blob/master/tweetr/public/images/tweeter-homepage-before-reg:login.png?raw=true)
+
+
 !["tweeter homepage buttons hover"](https://github.com/ssbelle/TweeterApp/blob/master/tweetr/public/images/tweeter-homepage-buttons-hover.png?raw=true)
+
+
 !["tweeter homepage reg/login form"](https://github.com/ssbelle/TweeterApp/blob/master/tweetr/public/images/tweeter-homepage-reg:login-form.png?raw=true)
+
+
 !["tweeter logged in welcome msg"](https://github.com/ssbelle/TweeterApp/blob/master/tweetr/public/images/tweeter-logged-in-welcome-msg.png?raw=true)
+
+
 !["tweeter logged in compose form"](https://github.com/ssbelle/TweeterApp/blob/master/tweetr/public/images/tweeter-logged-in-compose-form.png?raw=true)
 
 
